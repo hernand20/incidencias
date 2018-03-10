@@ -183,7 +183,7 @@
 @endsection
 
 @section('scripts')
-  <script src="/js/projects/admin/edit.js">
+  <script src="/js/admin/projects/edit.js">
 
   </script>
 @endsection('scripts')

@@ -53,8 +53,7 @@ class UserController extends Controller
   {
     $user = User::find($id);
     $projects = Project::all();
-    print_r($projects);
-    exit;
+    //$levels = Level::all();
     return view('admin.users.edit',compact('user', 'projects'));
   }
 

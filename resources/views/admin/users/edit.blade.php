@@ -40,22 +40,25 @@
         <button type="submit" value="button" class="btn btn-primary">Actualizar</button>
       </div>
     </form>
-    <div class="col-md-4">
-      <select class="form-control" name="">
-        <option value="">Selccion de Proyecto</option>
-        @foreach ($projects as $project)
-          <option value="{{ $project->id }}">{{ $project->name }}</option>
-        @endforeach
-      </select>
+    <div class="row">
+      <div class="col-md-4">
+        <select class="form-control"  id="select-project">
+          <option value="">Seleccione Proyecto</option>
+          @foreach ($projects as $project)
+            <option value="{{ $project->id }}">{{ $project->name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control"  id="select-level">
+          <option value="">Seleccione nivel</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-primary btn-block" name="button">Asignar proyecto</button>
+      </div>
     </div>
-    <div class="col-md-4">
-      <select class="form-control" name="">
-        <option value="">Seleccion de nivel</option>
-      </select>
-    </div>
-    <div class="col-md-4">
-      <button type="button" class="btn btn-primary btn-block" name="button">Asignar proyecto</button>
-    </div>
+
     <table class="table title-bordered">
       <thead>
         <tr>
@@ -80,4 +83,11 @@
   </div>
 </div>
 
+@endsection
+
+@section('scripts')
+
+<script src="/js/admin/users/edit.js">
+
+</script>
 @endsection
