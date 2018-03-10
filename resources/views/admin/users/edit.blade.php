@@ -78,6 +78,7 @@
               <span class="glyphicon glyphicon-remove"></span></a>
           </td>
         </tr>
+        <td></td>
       </tbody>
     </table>
   </div>
