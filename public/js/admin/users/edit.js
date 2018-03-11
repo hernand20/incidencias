@@ -17,6 +17,4 @@ function onSelectProjectChange() {
     $('#select-level').html(html_select);
 
   });
-
-
 }
