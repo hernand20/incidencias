@@ -19,6 +19,12 @@ class UsersTabSeeder extends Seeder
           'password' => bcrypt('123456'),
           'role' => 0
         ]);
+        User::create([
+          'name' => 'Miguel',
+          'email' => 'miguel@gmail.com',
+          'password' => bcrypt('123456'),
+          'role' => 0
+        ]);
 
         //Support
           User::create([
@@ -35,6 +41,7 @@ class UsersTabSeeder extends Seeder
             'password' => bcrypt('123456'),
             'role' => 2
           ]);
+
 
     }
 }
