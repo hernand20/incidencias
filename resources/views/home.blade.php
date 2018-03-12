@@ -19,10 +19,21 @@
                 <th>Severidad</th>
                 <th>Estado</th>
                 <th>Fecha creación</th>
-                <th>Resumen</th>
+                <th>Titulo</th>
               </tr>
             </thead>
-            <tbody id="dashboard_my_incidents"></tbody>
+            <tbody id="dashboard_my_incidents">
+              @foreach ($my_incidents as $incident)
+                <tr>
+                  <td>{{ $incident->id }}</td>
+                  <td>{{ $incident->Category->name }}</td>
+                  <td>{{ $incident->severity_full }}</td>
+                  <td>{{ $incident->id }}</td>
+                  <td>{{ $incident->created_at }}</td>
+                  <td>{{ $incident->title_short }}</td>
+                </tr>
+              @endforeach
+            </tbody>
           </table>
         </div>
       </div>
@@ -41,11 +52,25 @@
                 <th>Severidad</th>
                 <th>Estado</th>
                 <th>Fecha creación</th>
-                <th>Resumen</th>
+                <th>Titulo</th>
                 <th>Opción</th>
               </tr>
             </thead>
-            <tbody id="dashboard_no_responsible"></tbody>
+            <tbody id="dashboard_no_responsible">
+              @foreach ($pending_incidents as $incident)
+                <tr>
+                  <td>{{ $incident->id }}</td>
+                  <td>{{ $incident->Category->name }}</td>
+                  <td>{{ $incident->severity_full }}</td>
+                  <td>{{ $incident->id }}</td>
+                  <td>{{ $incident->created_at }}</td>
+                  <td>{{ $incident->title_short }}</td>
+                  <td>
+                    <a href=""></a>
+                  </td>
+                </tr>
+              @endforeach
+            </tbody>
           </table>
         </div>
       </div>
@@ -64,7 +89,7 @@
                 <th>Severidad</th>
                 <th>Estado</th>
                 <th>Fecha creación</th>
-                <th>Resumen</th>
+                <th>Titulo</th>
                 <th>Responsable</th>
               </tr>
             </thead>
