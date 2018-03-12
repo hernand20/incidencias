@@ -27,6 +27,16 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function selectProject($id)
+    {
+      //validar que el usuario este asiciado
+      $user = auth()->user();
+      $user->selected_project_id = $id;
+      $user->save();
+
+      return back();
+
+    }
 
     public function getReport()
     {

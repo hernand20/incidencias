@@ -45,8 +45,10 @@
                       @if (auth()->check())
                       <form class="navbar-form">
                         <div class="navbar-group">
-                          <select class="form-control" name="">
-                            <option value="">Sistemas</option>
+                          <select id="list-of-projects" class="form-control" name="">
+                            @foreach (auth()->user()->list_of_projects as $project)
+                            <option value="{{ $project->id }}">{{ $project->name }}</option>
+                            @endforeach
                           </select>
                         </div>
                       </form>
@@ -102,7 +104,12 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>﻿
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>﻿
+    <script src="/js/appblade.js">
+
+    </script>
     @yield('scripts')
 </body>
 </html>

@@ -30,6 +30,26 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //Relationsships
+    public function projects()
+    {
+      return $this->belongsToMany('App\Project');
+    }
+
+
+
+
+    //Accessors
+    public function getListOfProjectsAttribute()
+    {
+      if ($this->role == 1)
+        return $this->projects;
+        
+      return Project::all();
+    }
+
+
+
     public function getIsAdminAttribute()
     {
       return $this->role == 0;
