@@ -28,7 +28,7 @@ class Project extends Model
   {
     return $this->belongsToMany('App\User');
   }
-//Accessors
+
   public function categories()
   {
     return $this->hasMany('App\Category');
@@ -37,4 +37,11 @@ class Project extends Model
   {
     return $this->hasMany('App\Level');
   }
+  //Accessors
+  public function getFirstLevelIdAttribute()
+  {
+    return $this->levels->first()->id;
+    //dd($this->levels->first()->id);
+  }
+
 }

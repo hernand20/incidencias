@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Category;
 use App\Incident;
+use App\Project;
 
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class IncidentController extends Controller
 
   public function create()
   {
-    $categories = Category::where('project_id',null)->get();
+
+    $categories = Category::where('project_id', 2 )->get();
     return view('report')->with(compact('categories'));
   }
 
@@ -39,7 +41,13 @@ class IncidentController extends Controller
     $incident->severity = $request->input('severity');
     $incident->title = $request->input('title');
     $incident->description = $request->input('description');
-    $incident->client_id = auth()->user()->id;
+
+    $user = auth()->user();
+
+    $incident->client_id = $user->id;
+    $incident->project_id = $user->selected_project_id;
+    $incident->level_id = Project::find($user->selected_project_id)->first_level_id;
+    //$incident->level_id =Project::find($user->selected_project_id);
     $incident->save();
 
     return back();

@@ -5,6 +5,7 @@
     <div class="panel-heading">Dashboard</div>
 
     <div class="panel-body">
+      @if (auth()->user()->is_support)
       <!--Incidencias asignadas a mí.-->
       <div class="panel panel-primary">
         <div class="panel-heading">
@@ -76,6 +77,7 @@
           </table>
         </div>
       </div>
+      @endif
 
       <!--Incidencias asignadas a otros.-->
       <div class="panel panel-primary">
@@ -99,13 +101,13 @@
               @foreach ( $incident_by_me as $incident)
                 <tr>
                   <td>{{ $incident->id }}</td>
-                  <td>{{ $incident->Category->name }}</td>
+                  <td>{{ $incident->category_name }}</td>
                   <td>{{ $incident->severity_full }}</td>
                   <td>{{ $incident->id }}</td>
                   <td>{{ $incident->created_at }}</td>
                   <td>{{ $incident->title_short }}</td>
                   <td>
-                    {{ $incident->support_id }}
+                    {{ $incident->support_id ?: 'Sin asignar' }}
                   </td>
                 </tr>
               @endforeach
