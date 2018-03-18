@@ -8,7 +8,6 @@ class Incident extends Model
 {
   public function category()
   {
-
     return $this->belongsTo('App\Category');
   }
   public function getSeverityFullAttribute()
@@ -16,13 +15,10 @@ class Incident extends Model
     switch ($this->severity) {
       case 'M':
         return 'Menor';
-        break;
       case 'N':
         return 'Normal';
-        break;
       default:
         return 'Alta';
-        break;
     }
   }
   public function getTitleShortAttribute()

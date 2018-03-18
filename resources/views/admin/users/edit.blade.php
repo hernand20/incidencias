@@ -40,6 +40,7 @@
         <button type="submit" value="button" class="btn btn-primary">Actualizar</button>
       </div>
     </form>
+
     <form action="/proyecto-usuario"  method="post">
        {{ csrf_field() }}
       <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -77,8 +78,6 @@
           <td>{{ $project_user->project->name}}</td>
           <td>{{ $project_user->level->name }}</td>
           <td>
-            <a href="" class="btn btn-sm btn-primary " title="Editar">
-              <span class="glyphicon glyphicon-pencil"></span></a>
             <a href="/proyecto-usuario/{{ $project_user->id }}/eliminar" class="btn btn-sm btn-danger " title="Dar de baja">
               <span class="glyphicon glyphicon-remove"></span></a>
           </td>

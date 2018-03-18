@@ -47,7 +47,7 @@
                         <div class="navbar-group">
                           <select id="list-of-projects" class="form-control" name="">
                             @foreach (auth()->user()->list_of_projects as $project)
-                            <option value="{{ $project->id }}" @if($project->id==auth()->user()->select_project_id) selected @endif>{{ $project->name }}</option>
+                            <option value="{{ $project->id }}" @if($project->id==auth()->user()->selected_project_id) selected @endif>{{ $project->name }}</option>
                             @endforeach
                           </select>
                         </div>

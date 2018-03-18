@@ -33,22 +33,17 @@ class User extends Authenticatable
     //Relationsships
     public function projects()
     {
-      return $this->belongsToMany('App\Project');
+       return $this->belongsToMany('App\Project');
     }
-
-
-
 
     //Accessors
     public function getListOfProjectsAttribute()
     {
       if ($this->role == 1)
         return $this->projects;
-        
+
       return Project::all();
     }
-
-
 
     public function getIsAdminAttribute()
     {

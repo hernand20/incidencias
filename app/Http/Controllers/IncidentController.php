@@ -20,8 +20,7 @@ class IncidentController extends Controller
 
   public function create()
   {
-    $categories = Category::where('project_id', 1)->get();
-        
+    $categories = Category::where('project_id',null)->get();
     return view('report')->with(compact('categories'));
   }
 

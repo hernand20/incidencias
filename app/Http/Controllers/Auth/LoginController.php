@@ -45,9 +45,9 @@ class LoginController extends Controller
         return;
 
       //Suppport
-      if (! $user->select_project_id){
-        $user->select_project_id = $user->projects->first()->id;
+      if (! $user->selected_project_id){
+        $user->selected_project_id = $user->projects->first()->id;
         $user->save();
-      } 
+      }
     }
 }

@@ -28,9 +28,9 @@ class HomeController extends Controller
   {
     // Obtener las incidencias con agente de soporte asignado
     $user = auth()->user();
-    $selected_project_id = $user->select_project_id;
+    $selected_project_id = $user->selected_project_id;
 
-    $my_incidents = Incident::where('project_id', $user->selected_project_id)
+    $my_incidents = Incident::where('project_id', $selected_project_id)
                     ->where('support_id',$user->id)->get();
 
     $projectUser = ProjectUser::where('project_id', $selected_project_id)
@@ -38,18 +38,19 @@ class HomeController extends Controller
 
       // Obtener las incidencias sin agente de soporte asignado
     $pending_incidents = Incident::where('support_id', null)
-                         ->where('level_id', $projectUser->level_id)->get();
-   print_r($pending_incidents);
-   dd($pending_incidents);
+                                   ->where('level_id', $projectUser->level_id)->get();
 
-      return view('home')->with(compact('my_incidents', 'pending_incidents'));
+    $incident_by_me = Incident::where('client_id', $user->id)
+                                ->where('project_id', $selected_project_id)->get();
+
+      return view('home')->with(compact('my_incidents', 'pending_incidents','incident_by_me'));
   }
 
   public function selectProject($id)
   {
     //validar que el usuario este asiciado
     $user = auth()->user();
-    $user->select_project_id = $id;
+    $user->selected_project_id = $id;
     $user->save();
     return back();
   }

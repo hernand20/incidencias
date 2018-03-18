@@ -22,6 +22,13 @@ class Project extends Model
   protected $fillable = [
       'name', 'description', 'start',
   ];
+
+  // Relationsships
+  public function users()
+  {
+    return $this->belongsToMany('App\User');
+  }
+//Accessors
   public function categories()
   {
     return $this->hasMany('App\Category');

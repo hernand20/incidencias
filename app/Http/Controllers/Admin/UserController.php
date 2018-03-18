@@ -9,6 +9,7 @@ use App\User;
 use App\Project;
 use App\Level;
 use App\ProjectUser;
+
 class UserController extends Controller
 {
 /*  public function index()
@@ -55,7 +56,9 @@ class UserController extends Controller
     $user = User::find($id);
     $projects = Project::all();
     //$levels = Level::all();
+
     $projects_user= ProjectUser::where('user_id', $user->id)->get();
+
     return view('admin.users.edit',compact('user', 'projects', 'projects_user'));
   }
 
