@@ -10,6 +10,18 @@ class Incident extends Model
   {
     return $this->belongsTo('App\Category');
   }
+  public function project()
+  {
+    return $this->belongsTo('App\Project');
+  }
+  public function support()
+  {
+    return $this->belongsTo('App\User', 'support_id');
+  }
+  public function client()
+  {
+    return $this->belongsTo('App\User', 'client_id');
+  }
   public function getSeverityFullAttribute()
   {
     switch ($this->severity) {
@@ -31,4 +43,19 @@ class Incident extends Model
       return $this->category->name;
     return 'General';
   }
+  public function getSupportNameAttribute()
+  {
+    if ($this->support)
+      return $this->support->name;
+    return 'Sin asignar ';
+  }
+  public function getStateAttribute()
+  {
+    if ($this->active == 0)
+      return 'Resuelto';
+    if ($this->support_id)
+      return 'Asignado';
+    return 'Pendiente';
+  }
+
 }
