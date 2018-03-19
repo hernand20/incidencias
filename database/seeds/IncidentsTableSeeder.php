@@ -18,7 +18,7 @@ class IncidentsTableSeeder extends Seeder
         'severity' => 'N',
 
         'category_id' => 2,
-        'proyect_id' =>  1,
+        'project_id' =>  1,
         'level_id' => 1,
 
         'client_id' => 3,
